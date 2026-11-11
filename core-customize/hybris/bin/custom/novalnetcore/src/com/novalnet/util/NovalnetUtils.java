@@ -18,6 +18,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import org.apache.log4j.Logger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
