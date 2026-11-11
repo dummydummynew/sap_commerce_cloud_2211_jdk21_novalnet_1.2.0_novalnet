@@ -1,5 +1,5 @@
 {
-    "commerceSuiteVersion": "2211-jdk21.18",
+    "commerceSuiteVersion": "2211.11",
     "enableImageProcessingService": true,
     "extensions": [
         "cloudmediaconversion",
@@ -8,7 +8,8 @@
     "storefrontAddons": [
         {
             "addons": [
-                "ordermanagementaddon"
+                "ordermanagementaddon",
+                "novalnetcheckoutaddon"
             ],
             "storefronts": [
                 "yacceleratorstorefront"
@@ -16,6 +17,7 @@
             "template": "yacceleratorstorefront"
         }
     ],
+    
     "useConfig": {
         "properties": [
             {
