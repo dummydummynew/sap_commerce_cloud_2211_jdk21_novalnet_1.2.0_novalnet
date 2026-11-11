@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="novalnetCallbackFacade"
+          class="com.novalnet.facades.impl.DefaultNovalnetCallbackFacade"/>
+
+    <bean id="novalnetTransactionFacade"
+          class="com.novalnet.facades.impl.DefaultNovalnetTransactionFacade"/>
+
+    <bean id="novalnetPaymentFacade"
+          class="com.novalnet.facades.impl.DefaultNovalnetPaymentFacade"/>
+
+    <bean id="novalnetWebhookConfigFacade"
+          class="com.novalnet.facades.impl.DefaultNovalnetWebhookConfigFacade"/>
+
+    <bean id="novalnetMerchantDetailsFacade"
+          class="com.novalnet.facades.impl.DefaultNovalnetMerchantDetailsFacade"/>
+
+
+    <!-- B2B Facades -->
+    <bean id="novalnetSummaryFacade" class="com.novalnet.facades.impl.DefaultNovalnetSummaryFacade"/>
+    <bean id="novalnetAccountFacade" class="com.novalnet.facades.impl.DefaultNovalnetAccountFacade"/>
+    <bean id="novalnetPaymentTypeFacade" class="com.novalnet.facades.impl.DefaultNovalnetPaymentTypeFacade"/>
+    <bean id="novalnetCoreFacade" class="com.novalnet.facades.impl.DefaultNovalnetCoreFacade"/>
+    <bean id="novalnetPaymentMethodFacade" class="com.novalnet.facades.impl.DefaultNovalnetPaymentMethodFacade"/>
+
+
+</beans>

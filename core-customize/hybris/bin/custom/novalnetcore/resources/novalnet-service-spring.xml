@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="novalnetTransactionService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetTransactionService"/>
+
+    <bean id="novalnetPaymentHandlerService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetPaymentHandlerService"/>
+
+    <bean id="novalnetPaymentService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetPaymentService"/>
+
+    <bean id="novalnetApiService"
+          class="com.novalnet.service.http.impl.DefaultNovalnetApiService"/>
+
+    <bean id="novalnetOrderService"
+          class="com.novalnet.service.order.impl.DefaultNovalnetOrderService"/>
+
+    <bean id="novalnetTransactionBookingService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetTransactionBookingService"/>
+
+    <bean id="novalnetCallbackService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetCallbackService"/>
+
+    <bean id="novalnetCallbackOrderService"
+          class="com.novalnet.service.order.impl.DefaultNovalnetCallbackOrderService"/>
+
+    <bean id="novalnetCheckoutService"
+          class="com.novalnet.service.checkout.impl.DefaultNovalnetCheckoutService"
+          parent="defaultAcceleratorCheckoutFacade"/>
+
+    <bean id="novalnetPaymentMethodService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetPaymentMethodService"/>
+
+    <bean id="novalnetEndpointConfigService"
+          class="com.novalnet.service.http.impl.DefaultNovalnetEndpointConfigService"/>
+
+    <bean id="novalnetWebhookService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetWebhookService"/>
+
+    <bean id="novalnetOneClickPaymentService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetOneClickPaymentService"/>
+
+    <bean id="novalnetTransactionResultService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetTransactionResultService"/>
+
+    <bean id="novalnetGuaranteeValidationService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetGuaranteeValidationService"/>
+
+    <bean id="novalnetMerchantDetailsService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetMerchantDetailsService"/>
+
+    <bean id="novalnetTransactionCommentService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetTransactionCommentService"/>
+
+
+    <bean id="novalnetPaymentRequestBuilder"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetPaymentRequestBuilder"/>
+
+    <bean id="novalnetAddressService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetAddressService"/>
+
+
+    <!-- B2B Services -->
+    <bean id="novalnetCoreService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetCoreService"/>
+
+    <bean id="novalnetPaymentTypeCheckoutService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetPaymentTypeCheckoutService"/>
+    <bean id="novalnetSummaryService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetSummaryService"/>
+    <bean id="novalnetAccountService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetAccountService"/>
+
+    <bean id="novalnetCallBackService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetCallbackService"/>
+
+    <bean id="novalnetReplenishmentPaymentReferenceService"
+          class="com.novalnet.service.payment.impl.NovalnetReplenishmentPaymentReferenceService"/>
+
+
+    <bean id="novalnetReplenishmentScheduleOrderService"
+          class="com.novalnet.service.payment.impl.NovalnetReplenishmentScheduleOrderService"
+          parent="defaultB2BAcceleratorScheduleOrderService"/>
+
+    <bean id="novalnetB2BPaymentMethodService"
+          class="com.novalnet.service.payment.impl.DefaultNovalnetB2BPaymentMethodService"/>
+
+</beans>

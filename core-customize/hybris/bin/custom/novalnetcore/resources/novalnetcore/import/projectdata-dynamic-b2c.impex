@@ -1,0 +1,83 @@
+$contentCatalog = apparel-ukContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+
+$deCatalog = apparel-deContentCatalog
+$deCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$deCatalog]),CatalogVersion.version[default=Online])[default=$deCatalog:Online]
+
+$electronicsCatalog = electronicsContentCatalog
+$electronicsCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$electronicsCatalog]),CatalogVersion.version[default=Online])[default=$electronicsCatalog:Online]
+
+$wideContent = CMSImageComponent,BannerComponent
+
+$lang = en
+
+INSERT_UPDATE RendererTemplate; code[unique = true]              ; contextClass; rendererType(code)[default = 'velocity']
+                              ; novalnetOrderConfirmationBody    ; com.novalnet.core.email.context.NovalnetOrderCompletedEmailContext
+                              ; novalnetOrderConfirmationSubject ; com.novalnet.core.email.context.NovalnetOrderCompletedEmailContext
+
+UPDATE RendererTemplate; code[unique = true]              ; description[lang = $lang]                   ; templateScript[lang = $lang, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+                       ; novalnetOrderConfirmationBody    ; "Novalnet Order Confirmation Email Body"    ; jar:com.novalnet.setup.NovalnetcoreSystemSetup&/novalnetcore/import/email/email-novalnetOrderConfirmationBody.vm
+                       ; novalnetOrderConfirmationSubject ; "Novalnet Order Confirmation Email Subject" ; jar:com.novalnet.setup.NovalnetcoreSystemSetup&/novalnetcore/import/email/email-novalnetOrderConfirmationSubject.vm
+
+INSERT_UPDATE EmailPageTemplate; $contentCV[unique = true]; uid[unique = true]                  ; name                                       ; active; frontendTemplateName        ; subject(code)                    ; htmlTemplate(code)            ; restrictedPageTypes(code)
+                               ;                          ; NovalnetOrderCompletedEmailTemplate ; Novalnet Order Confirmation Email Template ; true  ; NovalnetOrderCompletedEmail ; novalnetOrderConfirmationSubject ; novalnetOrderConfirmationBody ; EmailPage
+
+INSERT_UPDATE EmailPageTemplate; $deCV[unique = true]; uid[unique = true]                  ; name                                       ; active; frontendTemplateName        ; subject(code)                    ; htmlTemplate(code)            ; restrictedPageTypes(code)
+                               ;                     ; NovalnetOrderCompletedEmailTemplate ; Novalnet Order Confirmation Email Template ; true  ; NovalnetOrderCompletedEmail ; novalnetOrderConfirmationSubject ; novalnetOrderConfirmationBody ; EmailPage
+
+INSERT_UPDATE EmailPageTemplate; $electronicsCV[unique = true]; uid[unique = true]                  ; name                                       ; active; frontendTemplateName        ; subject(code)                    ; htmlTemplate(code)            ; restrictedPageTypes(code)
+                               ;                              ; NovalnetOrderCompletedEmailTemplate ; Novalnet Order Confirmation Email Template ; true  ; NovalnetOrderCompletedEmail ; novalnetOrderConfirmationSubject ; novalnetOrderConfirmationBody ; EmailPage
+
+INSERT_UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]          ; name                              ; masterTemplate(uid, $contentCV)     ; defaultPage; approvalStatus(code)[default = 'approved']; fromEmail[lang = $lang]; fromName[lang = $lang]
+                       ;                          ; NovalnetOrderCompletedEmail ; Novalnet Order Confirmation Email ; NovalnetOrderCompletedEmailTemplate ; true       ;                                           ; test@gmail.com         ; Novalnet
+
+INSERT_UPDATE EmailPage; $deCV[unique = true]; uid[unique = true]          ; name                              ; masterTemplate(uid, $deCV)          ; defaultPage; approvalStatus(code)[default = 'approved']; fromEmail[lang = $lang]; fromName[lang = $lang]
+                       ;                     ; NovalnetOrderCompletedEmail ; Novalnet Order Confirmation Email ; NovalnetOrderCompletedEmailTemplate ; true       ;                                           ; test@gmail.com         ; Novalnet
+
+INSERT_UPDATE EmailPage; $electronicsCV[unique = true]; uid[unique = true]          ; name                              ; masterTemplate(uid, $electronicsCV) ; defaultPage; approvalStatus(code)[default = 'approved']; fromEmail[lang = $lang]; fromName[lang = $lang]
+                       ;                              ; NovalnetOrderCompletedEmail ; Novalnet Order Confirmation Email ; NovalnetOrderCompletedEmailTemplate ; true       ;                                           ; test@gmail.com         ; Novalnet
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; name                 ; active
+                         ;                          ; EmailSiteLogoSlot ; Email Site Logo Slot ; true
+                         ;                          ; EmailTopSlot      ; Email Top Slot       ; true
+                         ;                          ; EmailBottomSlot   ; Email Bottom Slot    ; true
+
+INSERT_UPDATE ContentSlot; $deCV[unique = true]; uid[unique = true]; name                 ; active
+                         ;                     ; EmailSiteLogoSlot ; Email Site Logo Slot ; true
+                         ;                     ; EmailTopSlot      ; Email Top Slot       ; true
+                         ;                     ; EmailBottomSlot   ; Email Bottom Slot    ; true
+
+INSERT_UPDATE ContentSlot; $electronicsCV[unique = true]; uid[unique = true]; name                 ; active
+                         ;                              ; EmailSiteLogoSlot ; Email Site Logo Slot ; true
+                         ;                              ; EmailTopSlot      ; Email Top Slot       ; true
+                         ;                              ; EmailBottomSlot   ; Email Bottom Slot    ; true
+
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'NovalnetOrderCompletedEmailTemplate']; validComponentTypes(code)
+                             ; SiteLogo           ;                                                                                          ;              ; logo
+                             ; TopContent         ;                                                                                          ; $wideContent ;
+                             ; BottomContent      ;                                                                                          ; $wideContent ;
+
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $deCV)[unique = true][default = 'NovalnetOrderCompletedEmailTemplate']; validComponentTypes(code)
+                             ; SiteLogo           ;                                                                                     ;              ; logo
+                             ; TopContent         ;                                                                                     ; $wideContent ;
+                             ; BottomContent      ;                                                                                     ; $wideContent ;
+
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $electronicsCV)[unique = true][default = 'NovalnetOrderCompletedEmailTemplate']; validComponentTypes(code)
+                             ; SiteLogo           ;                                                                                              ;              ; logo
+                             ; TopContent         ;                                                                                              ; $wideContent ;
+                             ; BottomContent      ;                                                                                              ; $wideContent ;
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                        ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'NovalnetOrderCompletedEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-NovalnetOrderCompletedEmail      ; SiteLogo               ;                                                                                              ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-NovalnetOrderCompletedEmail    ; TopContent             ;                                                                                              ; EmailTopSlot                               ; true
+                                    ;                          ; BottomContent-NovalnetOrderCompletedEmail ; BottomContent          ;                                                                                              ; EmailBottomSlot                            ; true
+
+INSERT_UPDATE ContentSlotForTemplate; $deCV[unique = true]; uid[unique = true]                        ; position[unique = true]; pageTemplate(uid, $deCV)[unique = true][default = 'NovalnetOrderCompletedEmailTemplate']; contentSlot(uid, $deCV)[unique = true]; allowOverwrite
+                                    ;                     ; SiteLogo-NovalnetOrderCompletedEmail      ; SiteLogo               ;                                                                                         ; EmailSiteLogoSlot                     ; true
+                                    ;                     ; TopContent-NovalnetOrderCompletedEmail    ; TopContent             ;                                                                                         ; EmailTopSlot                          ; true
+                                    ;                     ; BottomContent-NovalnetOrderCompletedEmail ; BottomContent          ;                                                                                         ; EmailBottomSlot                       ; true
+
+INSERT_UPDATE ContentSlotForTemplate; $electronicsCV[unique = true]; uid[unique = true]                        ; position[unique = true]; pageTemplate(uid, $electronicsCV)[unique = true][default = 'NovalnetOrderCompletedEmailTemplate']; contentSlot(uid, $electronicsCV)[unique = true]; allowOverwrite
+                                    ;                              ; SiteLogo-NovalnetOrderCompletedEmail      ; SiteLogo               ;                                                                                                  ; EmailSiteLogoSlot                              ; true
+                                    ;                              ; TopContent-NovalnetOrderCompletedEmail    ; TopContent             ;                                                                                                  ; EmailTopSlot                                   ; true
+                                    ;                              ; BottomContent-NovalnetOrderCompletedEmail ; BottomContent          ;                                                                                                  ; EmailBottomSlot                                ; true

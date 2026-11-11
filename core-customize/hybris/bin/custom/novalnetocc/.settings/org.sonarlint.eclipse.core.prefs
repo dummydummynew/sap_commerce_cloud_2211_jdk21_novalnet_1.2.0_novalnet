@@ -1,0 +1,5 @@
+autoEnabled=true
+bindingSuggestionsDisabled=false
+eclipse.preferences.version=1
+fileExclusions=FILE\:src/novalnet/controllers/v2/NovalnetCallbackController.java
+indexingBasedOnEclipsePlugIns=true

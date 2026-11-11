@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editor-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   id="com.keys.paymentaccesskey"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/editor-definition.xsd">
+    <name>PaymentAccessKeyEditor</name>
+    <description>Novalnet PaymentAccessKey</description>
+    <type>java.lang.String</type>
+    <editorClassName>com.novalnet.backoffice.editors.PaymentAccessKeyEditor</editorClassName>
+</editor-definition>
+

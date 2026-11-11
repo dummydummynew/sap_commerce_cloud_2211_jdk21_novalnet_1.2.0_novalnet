@@ -1,0 +1,11 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+
+# --- Electronics ---
+$contentCatalog = electronicsContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+
+INSERT_UPDATE JspIncludeComponent; $contentCV[unique = true]; uid[unique = true]; name                       ; page
+                                 ;                          ; CheckoutComponent ; Checkout Display Component ; /WEB-INF/views/addons/novalnetcheckoutaddon/responsive/pages/cart/checkoutDisplay.jsp

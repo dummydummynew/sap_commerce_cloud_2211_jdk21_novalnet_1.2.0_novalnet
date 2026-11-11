@@ -1,0 +1,13 @@
+@charset "utf-8";
+@import "./support/novalnetordermanagementwidget-variables.scss";
+
+.yw-labelstyle
+{
+	color: $novalnetordermanagement-label-text-color;
+}
+
+.novalnetordermanagement-container {
+	background: $novalnetordermanagement-container-background;
+	font-family: $novalnetordermanagement-container-font-family;
+	font-size: $novalnetordermanagement-container-font-size;
+}

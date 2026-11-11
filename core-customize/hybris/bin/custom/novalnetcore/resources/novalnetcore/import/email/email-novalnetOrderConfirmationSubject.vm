@@ -1,0 +1,3 @@
+## messageSource=classpath:/novalnetcore/messages/novalnetOrderConfirmation_$lang.properties
+
+${ctx.messages.novalnetOrderConfirmationSubject}, ${ctx.orderCode}

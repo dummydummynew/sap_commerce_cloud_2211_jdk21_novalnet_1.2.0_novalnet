@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<process xmlns="http://www.hybris.de/xsd/processdefinition"
+         start="cloneCartAction"
+         name="novalnetReplenishmentOrderProcess"
+         processClass="de.hybris.platform.b2bacceleratorservices.model.process.ReplenishmentProcessModel"
+         onError="error">
+
+    <action id="cloneCartAction" bean="cloneCartAction">
+        <transition name="OK" to="calculateCartAction"/>
+        <transition name="NOK" to="cleanUpClonedCartOnFailedAction"/>
+    </action>
+    <action id="calculateCartAction" bean="calculateCartAction">
+        <transition name="OK" to="novalnetTokenizedPaymentAction"/>
+        <transition name="NOK" to="cleanUpClonedCartOnFailedAction"/>
+    </action>
+    <action id="novalnetTokenizedPaymentAction" bean="novalnetTokenizedPaymentAction">
+        <transition name="OK" to="placeOrderAction"/>
+        <transition name="NOK" to="cleanUpClonedCartOnFailedAction"/>
+    </action>
+    <action id="placeOrderAction" bean="placeOrderAction">
+        <transition name="OK" to="novalnetReplenishmentStatusAction"/>
+        <transition name="NOK" to="cleanUpClonedCartOnErrorAction"/>
+    </action>
+    <action id="novalnetReplenishmentStatusAction" bean="novalnetReplenishmentStatusAction">
+        <transition name="OK" to="confirmationAction"/>
+        <transition name="NOK" to="cleanUpClonedCartOnErrorAction"/>
+    </action>
+    <action id="confirmationAction" bean="confirmationAction">
+        <transition name="OK" to="cleanUpClonedCartOnSuccessAction"/>
+        <transition name="NOK" to="cleanUpClonedCartOnErrorAction"/>
+    </action>
+    <action id="cleanUpClonedCartOnSuccessAction" bean="cleanUpClonedCartAction">
+        <transition name="OK" to="success"/>
+    </action>
+    <action id="cleanUpClonedCartOnErrorAction" bean="cleanUpClonedCartAction">
+        <transition name="OK" to="error"/>
+    </action>
+    <action id="cleanUpClonedCartOnFailedAction" bean="cleanUpClonedCartAction">
+        <transition name="OK" to="failed"/>
+    </action>
+
+    <end id="error" state="ERROR">Novalnet replenishment order processing failed.</end>
+    <end id="failed" state="FAILED">Novalnet payment was not accepted.</end>
+    <end id="success" state="SUCCEEDED">Created a tokenized Novalnet replenishment order.</end>
+</process>

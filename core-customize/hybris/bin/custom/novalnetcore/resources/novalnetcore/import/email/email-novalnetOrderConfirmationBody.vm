@@ -1,0 +1,216 @@
+## messageSource=classpath:/novalnetcore/messages/novalnetOrderConfirmation_$lang.properties
+
+#macro( genHtmlBoldFont $text )
+<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>$text</b></font>
+#end
+
+#macro( genHtmlLink $url $textColor $bodyContent )
+<a href="$url"
+    style="text-decoration:none; color:$textColor; font-size:12px; font-family:Arial, Helvetica, sans-serif;">$bodyContent</a>
+#end
+
+#macro( displayAddress $address )
+$!{address.firstName} $!{address.lastName}<br/>
+    #if($address.companyName)$!{address.companyName}<br/>#end
+    $!{address.line1}<br/>
+    #if($address.line2)$!{address.line2}<br/>#end
+    $!{address.town}, $!{address.postalCode}<br/>
+    #if($address.region)$!{address.region.name}<br/>#end
+    $!{address.country.name}
+#end
+
+<html>
+
+<head></head>
+
+<body bgcolor="#ffffff">
+
+    #set( $accountUrl = "${ctx.baseUrl}/my-account/orders" )
+
+    #if( $ctx.order && $ctx.order.guestCustomer )
+    #set( $orderInfoUrl = "${ctx.baseUrl}/guest/order/${ctx.order.guid}" )
+    #else
+    #set( $orderInfoUrl = "${ctx.baseUrl}/my-account/order/${ctx.orderCode}" )
+    #end
+
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+        <tr>
+            <td align="center" valign="top">
+
+                <table width="610" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#fff">
+
+                    <tr>
+                        <td align="center" valign="middle">${ctx.cmsSlotContents.SiteLogo}</td>
+                    </tr>
+
+                    <tr>
+                        <td height="30" align="center" valign="middle" bgcolor="#000000">
+                            <font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">
+
+                                #if( !$ctx.guestCustomer )
+                                #genHtmlLink("${ctx.secureBaseUrl}/my-account" "#FFFFFF"
+                                "${ctx.messages.myAccount}")&nbsp;|
+                                #end
+
+                                #genHtmlLink("${ctx.baseUrl}/store-finder" "#FFFFFF" "${ctx.messages.storeFinder}")
+
+                            </font>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font color="#666666" size="2" face="Arial, Helvetica, sans-serif">
+                                <div style="display:block; margin-top:10px; margin-bottom:10px;">
+                                    ${ctx.cmsSlotContents.TopContent}</div>
+                            </font>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            #genHtmlBoldFont("${ctx.messages.Hello} $!{ctx.displayName},")
+                            <br/><br/>
+                            <font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">
+                                ${ctx.messages.orderConfirmedText}
+                            </font>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding-top:15px;">
+                            #genHtmlBoldFont("${ctx.messages.orderNumber}: ")#genHtmlLink($orderInfoUrl "#414a4f"
+                            ${ctx.orderCode})
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding-top:15px;">
+                            #genHtmlBoldFont("${ctx.messages.email}")
+                            <br/>
+                            <font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">$!{ctx.email}</font>
+                        </td>
+                    </tr>
+
+                    #if( $ctx.order )
+                    <tr>
+                        <td style="padding-top:20px;">
+
+                            <table width="100%" cellpadding="6" cellspacing="0">
+
+                                <tr bgcolor="#f5f5f5">
+                                    <td>#genHtmlBoldFont("${ctx.messages.product}")</td>
+                                    <td align="center">#genHtmlBoldFont("${ctx.messages.quantity}")</td>
+                                    <td align="right">#genHtmlBoldFont("${ctx.messages.price}")</td>
+                                    <td align="right">#genHtmlBoldFont("${ctx.messages.total}")</td>
+                                </tr>
+
+                                #foreach( $entry in $ctx.order.entries )
+                                <tr>
+                                    <td>
+                                        <font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">
+                                            $!{entry.product.name}
+                                            #if($entry.product.code)<br/>
+                                            <font color="#999999" size="1">SKU: $!{entry.product.code}</font>#end
+                                        </font>
+                                    </td>
+
+                                    <td align="center">
+                                        <font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">
+                                            $!{entry.quantity}</font>
+                                    </td>
+
+                                    <td align="right">
+                                        <font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">
+                                            $!{entry.basePrice} $!{ctx.order.currency.isocode}</font>
+                                    </td>
+
+                                    <td align="right">
+                                        <font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">
+                                            $!{entry.totalPrice} $!{ctx.order.currency.isocode}</font>
+                                    </td>
+                                </tr>
+                                #end
+
+                                <tr>
+                                    <td colspan="4"
+                                        style="border-top:1px solid #e5e5e5; font-size:1px; line-height:1px;">&nbsp;
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td align="right">#genHtmlBoldFont("${ctx.messages.subtotal}:")</td>
+                                    <td colspan="2" align="right">
+                                        <font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">
+                                            $!{ctx.order.subtotal} $!{ctx.order.currency.isocode}</font>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td align="right">#genHtmlBoldFont("${ctx.messages.deliveryCost}:")</td>
+                                    <td colspan="2" align="right">
+                                        <font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">
+                                            $!{ctx.order.deliveryCost} $!{ctx.order.currency.isocode}</font>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td align="right">#genHtmlBoldFont("${ctx.messages.tax}:")</td>
+                                    <td colspan="2" align="right">
+                                        <font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">
+                                            $!{ctx.order.totalTax} $!{ctx.order.currency.isocode}</font>
+                                    </td>
+                                </tr>
+
+                                <tr bgcolor="#f5f5f5">
+                                    <td></td>
+                                    <td align="right">#genHtmlBoldFont("${ctx.messages.grandTotal}:")</td>
+                                    <td colspan="2" align="right">
+                                        #genHtmlBoldFont("$!{ctx.order.totalPrice} $!{ctx.order.currency.isocode}")
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding-top:15px;">
+                            #genHtmlBoldFont("${ctx.messages.deliveryAddress}")
+                            <br/>
+                            <font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">
+                                #displayAddress($ctx.order.deliveryAddress)
+                            </font>
+                        </td>
+                    </tr>
+                    #end
+
+                    <tr>
+                        <td align="center" valign="middle" style="padding-top:20px;">
+                            <a href="${ctx.baseUrl}"
+                                style="display:block; margin-top:10px; margin-bottom:10px;">${ctx.cmsSlotContents.BottomContent}</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td height="30" align="center" valign="middle" bgcolor="#000000">
+                            <font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">
+                                #genHtmlLink("${ctx.baseUrl}" "#FFFFFF"
+                                "${ctx.messages.help}")&nbsp;|&nbsp;#genHtmlLink("${ctx.messages.contactUsPage}"
+                                "#FFFFFF" "${ctx.messages.contactUs}")&nbsp;|&nbsp;#genHtmlLink("${ctx.baseUrl}"
+                                "#FFFFFF" "${ctx.messages.termsAndCondition}")
+                            </font>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

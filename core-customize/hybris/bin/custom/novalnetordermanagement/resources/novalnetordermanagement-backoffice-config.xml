@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved
+-->
+<config xmlns="http://www.hybris.com/cockpit/config">
+
+    <context component="cseditorareaactions" type="Order"
+             merge-by="type">
+        <y:actions
+                xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+
+            <!-- COMMON GROUP -->
+            <y:group qualifier="common">
+                <y:label>actiongroup.common</y:label>
+
+                <!-- Remove OOTB -->
+                <y:action
+                        action-id="de.hybris.ordermanagementbackoffice.actions.order.cancelorderaction"
+                        property="currentObject" merge-mode="remove"/>
+
+                <!--Novalnet cancel order action -->
+                <y:action
+                        action-id="com.novalnet.actions.order.cancelorderaction"
+                        property="currentObject"/>
+
+                <!--Novalnet return request and refund actions -->
+                <y:action
+                        action-id="com.novalnet.actions.returns.createreturnrequestaction"
+                        property="currentObject"/>
+
+                <!--Novalnet manual payment capture action -->
+                <y:action
+                        action-id="com.novalnet.actions.returns.NovalnetManualPaymentCaptureAction"
+                        property="currentObject"/>
+            </y:group>
+
+            <!-- THREE DOTS GROUP -->
+            <y:three-dots-group
+                    qualifier="threeDotsGroupActions">
+
+                <!-- Remove OOTB actions -->
+                <y:action
+                        action-id="de.hybris.ordermanagementbackoffice.actions.returns.createreturnrequestaction"
+                        property="currentObject" merge-mode="remove"/>
+
+                <y:action
+                        action-id="de.hybris.ordermanagementbackoffice.actions.order.manualpaymentcaptureaction"
+                        property="currentObject" merge-mode="remove"/>
+            </y:three-dots-group>
+
+        </y:actions>
+    </context>
+
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="eclipsebin/classes" path="src"/>
+	<classpathentry exported="true" kind="lib" path="lib/json-20180813.jar"/>
+	<classpathentry kind="src" path="acceleratoraddon/web/webroot/WEB-INF/tags"/>
+	<classpathentry kind="src" path="gensrc"/>
+	<classpathentry exported="true" kind="lib" path="lib/gson-2.7.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/addonsupport"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/platform"/>
+	<classpathentry kind="lib" path="acceleratoraddon/web/webroot/WEB-INF/messages"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/acceleratorstorefrontcommons"/>
+	<classpathentry kind="src" path="acceleratoraddon/web/src"/>
+	<classpathentry kind="src" path="acceleratoraddon/web/webroot/WEB-INF/views"/>
+	<classpathentry exported="true" kind="lib" path="resources"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/yacceleratorstorefront"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/novalnetcore"/>
+	<classpathentry kind="output" path="eclipsebin/notused"/>
+</classpath>

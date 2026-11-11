@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="novalnetDao"
+          class="com.novalnet.dao.impl.DefaultNovalnetDao"/>
+
+    <bean id="novalnetCallbackDao"
+          class="com.novalnet.dao.impl.DefaultNovalnetCallbackDao"/>
+
+    <bean id="novalnetReplenishmentDao"
+          class="com.novalnet.dao.impl.DefaultNovalnetReplenishmentDao"/>
+
+    <bean id="objectMapper"
+          class="com.fasterxml.jackson.databind.ObjectMapper"/>
+
+</beans>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="novalnetWebhookInterceptor"
+          class="com.novalnet.interceptors.NovalnetWebhookInterceptor">
+    </bean>
+
+    <bean id="novalnetWebhookPrepareInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="novalnetWebhookInterceptor"/>
+        <property name="typeCode" value="BaseStore"/>
+    </bean>
+
+    <bean id="transactionBookingInterceptor"
+          class="com.novalnet.interceptors.TransactionBookingInterceptor">
+        <property name="novalnetTransactionFacade"
+                  ref="novalnetTransactionFacade"/>
+    </bean>
+
+    <bean id="transactionBookingInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor"
+                  ref="transactionBookingInterceptor"/>
+        <property name="typeCode" value="Order"/>
+
+    </bean>
+
+</beans>

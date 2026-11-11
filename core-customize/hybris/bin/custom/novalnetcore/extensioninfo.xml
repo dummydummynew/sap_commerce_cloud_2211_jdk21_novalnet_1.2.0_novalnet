@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved. -->
+<extensioninfo
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+
+    <extension abstractclassprefix="Generated"
+               classprefix="Novalnetcore" jaloLogicFree="true"
+               managername="NovalnetcoreManager"
+               managersuperclass="de.hybris.platform.jalo.extension.Extension"
+               name="novalnetcore" usemaven="false">
+
+        <requires-extension name="acceleratorcms"/>
+        <requires-extension name="ordermanagementfacades"/>
+        <requires-extension name="commercewebservicescommons"/>
+        <requires-extension name="b2bacceleratorfacades"/>
+        <requires-extension name="b2bacceleratorservices"/>
+        <requires-extension name="b2bacceleratoraddon"/>
+        <requires-extension name="commerceservices"/>
+        <requires-extension name="commercefacades"/>
+        <requires-extension name="warehousing"/>
+        <requires-extension name="acceleratorservices"/>
+        <requires-extension name="solrserver"/>
+
+        <coremodule generated="true"
+                    manager="com.novalnet.jalo.NovalnetcoreManager"
+                    packageroot="com.novalnet"/>
+
+        <webmodule jspcompile="false" webroot="/novalnetcore"/>
+
+
+        <meta key="extgen-template-extension" value="true"/>
+
+    </extension>
+
+
+</extensioninfo>

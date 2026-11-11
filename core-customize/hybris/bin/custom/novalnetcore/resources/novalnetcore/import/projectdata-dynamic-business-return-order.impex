@@ -1,0 +1,28 @@
+INSERT_UPDATE DynamicProcessDefinition; code[unique = true]     ; active; content
+                                      ; novalnet-return-process ; true  ; "<process xmlns='http://www.hybris.de/xsd/processdefinition' start='initialReturnAction' name='novalnet-return-process' processClass='de.hybris.platform.returns.model.ReturnProcessModel'>
+
+    <action id='initialReturnAction' bean='initialReturnAction'>
+        <transition name='ONLINE' to='waitForConfirmOrCancelReturnAction'/>
+        <transition name='INSTORE' to='captureRefundAction'/>
+    </action>
+
+    <wait id='waitForConfirmOrCancelReturnAction' prependProcessCode='true' then='failed'>
+        <case event='ConfirmOrCancelRefundEvent'>
+            <choice id='cancelReturn' then='cancelReturnAction'/>
+            <choice id='approveReturn' then='captureRefundAction'/>
+        </case>
+    </wait>
+
+    <action id='captureRefundAction' bean='captureRefundAction'>
+        <transition name='OK' to='success'/>
+        <transition name='NOK' to='failed'/>
+    </action>
+
+    <action id='cancelReturnAction' bean='cancelReturnAction'>
+        <transition name='OK' to='success'/>
+    </action>
+
+    <end id='success' state='SUCCEEDED'>Novalnet Refund Completed Successfully.</end>
+    <end id='failed' state='FAILED'>Novalnet Refund Process Failed.</end>
+
+</process>"

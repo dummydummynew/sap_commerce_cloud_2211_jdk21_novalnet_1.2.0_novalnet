@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="novalnetOrderCompletedEmailProcessDefinitionResource"
+          class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+        <property name="resource"
+                  value="classpath:/novalnetcore/processes/novalnetOrderCompletedEmailProcess.xml"/>
+    </bean>
+
+    <bean id="generateNovalnetOrderCompletedEmailAction"
+          parent="abstractGenerateEmailAction">
+        <property name="frontendTemplateName"
+                  value="NovalnetOrderCompletedEmailTemplate"/>
+    </bean>
+
+    <!-- B2B Replenishment Process -->
+    <bean id="novalnetReplenishmentOrderProcessDefinitionResource"
+          class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+        <property name="resource" value="classpath:/novalnetcore/processes/novalnetReplenishmentOrderProcess.xml"/>
+    </bean>
+
+    <!-- B2B Replenishment Process Actions -->
+    <bean id="novalnetTokenizedPaymentAction" class="com.novalnet.process.actions.NovalnetTokenizedPaymentAction"
+          parent="abstractAction">
+    </bean>
+
+    <bean id="novalnetReplenishmentStatusAction" class="com.novalnet.process.actions.NovalnetReplenishmentStatusAction"
+          parent="abstractAction"/>
+
+
+</beans>

@@ -1,0 +1,23 @@
+INSERT_UPDATE MinConstraint; id[unique = true] ; severity(code, itemtype(code)); active; annotation                         ; descriptor(enclosingType(code), qualifier) ; message[lang = en]                            ; message[lang = de]                       ; value
+                           ; InvoiceDueDateMin ; ERROR:Severity                ; true  ; jakarta.validation.constraints.Min ; NovalnetInvoicePaymentMode:novalnetDueDate ; The value must be greater than or equal to 7. ; Der Wert muss größer oder gleich 7 sein. ; 7
+
+INSERT_UPDATE MinConstraint; id[unique = true]; severity(code, itemtype(code)); active; annotation                         ; descriptor(enclosingType(code), qualifier)         ; message[lang = en]                            ; message[lang = de]                       ; value
+                           ; SepaDueDateMin   ; ERROR:Severity                ; true  ; jakarta.validation.constraints.Min ; NovalnetDirectDebitSepaPaymentMode:novalnetDueDate ; The value must be greater than or equal to 3. ; Der Wert muss größer oder gleich 3 sein. ; 3
+
+INSERT_UPDATE MaxConstraint; id[unique = true]; severity(code, itemtype(code)); active; annotation                         ; descriptor(enclosingType(code), qualifier)         ; message[lang = en]                          ; message[lang = de]                         ; value
+                           ; SepaDueDateMax   ; ERROR:Severity                ; true  ; jakarta.validation.constraints.Max ; NovalnetDirectDebitSepaPaymentMode:novalnetDueDate ; The value must be less than or equal to 14. ; Der Wert muss kleiner oder gleich 14 sein. ; 14
+
+INSERT_UPDATE MinConstraint; id[unique = true]    ; severity(code, itemtype(code)); active; annotation                         ; descriptor(enclosingType(code), qualifier)    ; message[lang = en]                            ; message[lang = de]                       ; value
+                           ; PrepaymentDueDateMin ; ERROR:Severity                ; true  ; jakarta.validation.constraints.Min ; NovalnetPrepaymentPaymentMode:novalnetDueDate ; The value must be greater than or equal to 3. ; Der Wert muss größer oder gleich 3 sein. ; 3
+
+INSERT_UPDATE MaxConstraint; id[unique = true]    ; severity(code, itemtype(code)); active; annotation                         ; descriptor(enclosingType(code), qualifier)    ; message[lang = en]                          ; message[lang = de]                         ; value
+                           ; PrepaymentDueDateMax ; ERROR:Severity                ; true  ; jakarta.validation.constraints.Max ; NovalnetPrepaymentPaymentMode:novalnetDueDate ; The value must be less than or equal to 14. ; Der Wert muss kleiner oder gleich 14 sein. ; 14
+
+INSERT_UPDATE NotEmptyConstraint; id[unique = true]      ; severity(code, itemtype(code)); active; annotation                                         ; descriptor(enclosingType(code), qualifier); message[lang = en]                ; message[lang = de]
+                                ; NovalnetAPIKeyRequired ; ERROR:Severity                ; true  ; de.hybris.platform.validation.annotations.NotEmpty ; BaseStore:novalnetAPIKey                  ; Please fill in the required field ; Bitte füllen Sie die erforderlichen Felder aus.
+
+INSERT_UPDATE NotEmptyConstraint; id[unique = true]                ; severity(code, itemtype(code)); active; annotation                                         ; descriptor(enclosingType(code), qualifier); message[lang = en]                ; message[lang = de]
+                                ; NovalnetPaymentAccessKeyRequired ; ERROR:Severity                ; true  ; de.hybris.platform.validation.annotations.NotEmpty ; BaseStore:novalnetPaymentAccessKey        ; Please fill in the required field ; Bitte füllen Sie die erforderlichen Felder aus.# USE CTRL-SPACE for type-ahead support
+
+INSERT_UPDATE DecimalMinConstraint; id[unique = true]  ; severity(code, itemtype(code)); active; annotation                                ; descriptor(enclosingType(code), qualifier); message[lang = en]          ; message[lang = de]                         ; value; inclusive
+                                  ; OrderBookAmountMin ; ERROR:Severity                ; true  ; jakarta.validation.constraints.DecimalMin ; Order:bookAmount                          ; Please enter a valid amount ; Bitte geben Sie einen gültigen Betrag ein. ; 0    ; false

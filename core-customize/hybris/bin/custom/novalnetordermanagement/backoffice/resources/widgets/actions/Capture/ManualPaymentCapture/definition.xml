@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<action-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   id="com.novalnet.actions.returns.NovalnetManualPaymentCaptureAction"
+                   xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
+
+    <name>ManualPaymentCapture</name>
+    <description>ManualPaymentCapture Action</description>
+    <author>Novalnet</author>
+    <version>0.1</version>
+
+    <actionClassName>com.novalnet.novalnetordermanagement.actions.capture.NovalnetManualPaymentCaptureAction
+    </actionClassName>
+    <inputType>de.hybris.platform.core.model.order.OrderModel</inputType>
+    <outputType>de.hybris.platform.core.model.order.OrderModel</outputType>
+
+    <!-- folder icons with the icons must be created in the following directory: myextension/backoffice/resources/widgets/actions/myaction -->
+    <iconUri>icons/icon_action_manualpaymentcapture_default.png</iconUri>
+    <iconHoverUri>icons/icon_action_manualpaymentcapture_hover.png</iconHoverUri>
+    <iconDisabledUri>icons/icon_action_manualpaymentcapture_disabled.png</iconDisabledUri>
+
+    <settings>
+        <setting key="viewMode" default-value="iconAndText"/>
+    </settings>
+
+    <keywords>
+        <keyword>Novalnet</keyword>
+    </keywords>
+
+</action-definition>

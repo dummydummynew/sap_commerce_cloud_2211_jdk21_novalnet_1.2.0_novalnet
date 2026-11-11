@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="novalnetFollowOnRefundCommand"
+          class="com.novalnet.commands.NovalnetFollowOnRefundCommand"/>
+
+    <bean name="novalnetCreditCardFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetCreditCard"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetSepaFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider"
+                  value="novalnetDirectDebitSepa"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetPayPalFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetPayPal"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetInvoiceFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetInvoice"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetPrepaymentFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetPrepayment"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetOnlineBankFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider"
+                  value="novalnetOnlineBankTransfer"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetGuaranteedInvoiceFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider"
+                  value="novalnetGuaranteedInvoice"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetGuaranteedSepaFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider"
+                  value="novalnetGuaranteedDirectDebitSepa"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetMultibancoFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetMultibanco"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetBancontactFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetBancontact"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetPostFinanceFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetPostFinance"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetPostFinanceCardFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider"
+                  value="novalnetPostFinanceCard"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetIdealFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetIdeal"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetEpsFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetEps"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetPrzelewy24Factory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetPrzelewy24"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetDirectDebitAchFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider"
+                  value="novalnetDirectDebitAch"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetMbWayFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetMbWay"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetWeChatPayFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetWeChatPay"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetTrustlyFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetTrustly"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetBlikFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetBlik"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetTwintFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetTwint"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetApplePayFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetApplePay"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetGooglePayFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetGooglePay"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="novalnetAliPayFactory"
+          class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+        <property name="paymentProvider" value="novalnetAlipay"/>
+        <property name="commands">
+            <map>
+                <entry>
+                    <key>
+                        <value type="java.lang.Class">
+                            de.hybris.platform.payment.commands.FollowOnRefundCommand
+                        </value>
+                    </key>
+                    <ref bean="novalnetFollowOnRefundCommand"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>
