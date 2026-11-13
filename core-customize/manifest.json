@@ -283,10 +283,7 @@
                 {
                     "name": "datahubadapter",
                     "contextPath": "/datahubadapter"
-                },
-				{ "name": "yacceleratorstorefront", 
-				  "contextPath": "" 
-				}
+                }
             ]
         },
         {
@@ -341,7 +338,10 @@
                 {
                     "name": "xyformsweb",
                     "contextPath": "/xyformsweb"
-                }
+                },
+				{ "name": "yacceleratorstorefront", 
+				  "contextPath": "" 
+				}
             ]
         },
         {
