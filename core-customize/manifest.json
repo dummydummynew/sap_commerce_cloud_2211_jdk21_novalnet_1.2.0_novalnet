@@ -283,7 +283,10 @@
                 {
                     "name": "datahubadapter",
                     "contextPath": "/datahubadapter"
-                }
+                },
+				{ "name": "yacceleratorstorefront", 
+				  "contextPath": "" 
+				}
             ]
         },
         {
